@@ -89,7 +89,7 @@ int Height(AVL_Node<T>* cur)
 ## 实现要点——失衡调整
 ### 1.左旋
 ![LeftRotation](https://img-blog.csdnimg.cn/20200525003714496.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p4eTAxMjM0MA==,size_16,color_FFFFFF,t_70)
-当我们在**右子树插入右孩子**导致AVL失衡时，我们需要进行单左旋调整。旋转围绕最小失衡子树的根节点进行。 在删除新节点时也有可能会出现需要单左旋的情况。
+<br>当我们在**右子树插入右孩子**导致AVL失衡时，我们需要进行单左旋调整。旋转围绕最小失衡子树的根节点进行。 在删除新节点时也有可能会出现需要单左旋的情况。
 ```cpp
 AVL_Node<T>* LeftRotation(AVL_Node<T> *cur)
 {
@@ -112,7 +112,7 @@ PS:新根结点的左子树由当前结点的右子树接受<br>
 （根据中序遍历，新根结点原本就是失衡根结点的右子树上的结点，因此新根结点的左子树全部大于失衡根结点，所以可以成为失衡根结点的新右子树）
 ### 2.右旋
 ![rightRotation](https://img-blog.csdnimg.cn/2020052500372849.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p4eTAxMjM0MA==,size_16,color_FFFFFF,t_70)
-插入3、2后出现了不平衡的情况。此时的插入情况是**“在左子树上插入左孩子导致AVL树失衡”**，我们需要进行单右旋调整。
+<br>插入3、2后出现了不平衡的情况。此时的插入情况是“**在左子树上插入左孩子导致AVL树失衡**”，我们需要进行单右旋调整。
 ```cpp
 AVL_Node<T>* RightRotation(AVL_Node<T> *cur)
 {
@@ -126,7 +126,7 @@ AVL_Node<T>* RightRotation(AVL_Node<T> *cur)
 ```
 ### 3.先右旋后左旋
 ![RightLeftRotation](https://img-blog.csdnimg.cn/20200525003758516.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p4eTAxMjM0MA==,size_16,color_FFFFFF,t_70)
-这种情况，总结起来就是**“在右子树上插入左孩子导致AVL树失衡"**,此时我们需要进行先右旋后左旋的调整。
+<br>这种情况，总结起来就是“**在右子树上插入左孩子导致AVL树失衡**”,此时我们需要进行先右旋后左旋的调整。
 ```cpp
 AVL_Node<T>* RightLeftRotation(AVL_Node<T> *cur)
 {
@@ -140,7 +140,7 @@ AVL_Node<T>* RightLeftRotation(AVL_Node<T> *cur)
 PS:对右孩子进行右旋操作就是单纯的该结点转移，因为右孩子并未失衡
 ### 4.先左旋后右旋
 ![LeftRightRotation](https://img-blog.csdnimg.cn/20200525003806301.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p4eTAxMjM0MA==,size_16,color_FFFFFF,t_70)
-当我们**“在左子树上插入右孩子导致AVL树失衡"**,此时我们需要进行先左旋后右旋的调整.
+<br>当我们“**在左子树上插入右孩子导致AVL树失衡**”,此时我们需要进行先左旋后右旋的调整.
 ```cpp
 AVL_Node<T>* LeftRightRotation(AVL_Node<T> *cur)
 {
