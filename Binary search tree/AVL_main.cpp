@@ -4,6 +4,7 @@ using namespace std;
 
 int main()
 {
+    cout<<"请输入结点数据，按回车结束输入："<<endl;
     AVL<int> t;
     cout << "AVL树高：" << t.Height() << endl;
     cout << "广义表形式的AVL树：" << endl;
