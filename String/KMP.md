@@ -62,28 +62,28 @@ int Violent_Match(String S,String T)
 如果对于值k，已有T0 T1, ..., Tk-1 = Tj-k Tj-k+1, ..., Tj-1，相当于next[j] = k，即前后缀字符的最大长度。<br>
 这意味着什么呢？究其本质，next[j] = k 代表p[j] 之前的模式串子串中，有长度为k 的相同前缀和后缀。有了这个next 数组，在KMP匹配中，当模式串中j 处的字符失配时，下一步用next[j]处的字符继续跟文本串匹配，相当于模式串向右移动j - next[j] 位。<br>
 ![](http://img.blog.csdn.net/20140812223633281)<br>
-如下图：
+如下图：<br>
 ![](https://imgconvert.csdnimg.cn/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTQwNzIxMjIzODA5NjE3?x-oss-process=image/format,png)
 ![](https://imgconvert.csdnimg.cn/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTQwNzIxMjIzNTM5NzY1?x-oss-process=image/format,png)<br>
 综上，KMP的next 数组相当于告诉我们：当模式串中的某个字符跟文本串中的某个字符匹配失配时，模式串下一步应该跳到哪个位置。如模式串中在j 处的字符跟文本串在i 处的字符匹配失配时，下一步用next [j] 处的字符继续跟文本串i 处的字符匹配，相当于模式串向右移动 j - next[j] 位。
 #### e.g:
-| j    | 0|1|2|3|4|5|
-| :--- | :----: | | | | ||
-| T | a|b|c|d|e|x |
-| next[j]    | -1|0|0|0|0|0     |
+| j | 0|1|2|3|4|5|
+|:-    |---|--- |- |- | -|- |
+| T | a|b|c|d|e|x|
+| next[j]|-1|0|0|0|0|0|
 
 | j    | 0|1|2|3|4|5|
-| :--- | :----: | | | | | |
+|:- |- |- |- |- |- |- |
 | T | a|b|c|a|b|x |
 | next[j]    | -1|0|0|0|1|2     |
 
 | j    | 0|1|2|3|4|5|6|7|8|
-| :--- | :----:| | | | | | | ||
+| :--- | -|- |- |- |- |- |- |- |-|
 | T | a|b|a|b|a|a|a|b|a |
 | next[j]    | -1|0|0|1|2|3|1|1|2     |
 
 | j    | 0|1|2|3|4|5|6|7|8|
-| :--- | :----: || | | | | | | |
+| :--- | - |-|- |- |- |- |- |- |- |
 | T | a|a|a|a|a|a|a|a|b |
 | next[j]    | -1|0|1|2|3|4|5|6|7     |
 
@@ -182,7 +182,7 @@ void get_nextval(String T,int *nextval)
 ### nextval数组
 #### e.g
 | j    | 0|1|2|3|4|5|6|7|8|
-| :--- |  |:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
-| T | a|b|a|b|a|a|a|b|a |
-| next[j]    | -1|0|0|1|2|3|1|1|2     |
+| :--- |:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
+| T | a|b|a|b|a|a|a|b|a|
+| next[j]    | -1|0|0|1|2|3|1|1|2|
 |nextval[j]|-1|0|-1|0|-1|3|1|0|-1|  
