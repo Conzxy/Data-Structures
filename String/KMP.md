@@ -113,8 +113,6 @@ void get_next(String T,int *next)
   }
 }
 ```
-j=next[j]是要去找长度更小的相同前缀
-![](http://img.blog.csdn.net/20150812214857858)
 ```cpp
 int KMP_Match(String S,String T)
 {
@@ -139,6 +137,10 @@ int KMP_Match(String S,String T)
     return -1;
 }
 ```
+### 代码部分解析
+j=next[j]是要去找长度更小的相同前缀后缀
+next数组存的都是失配字符的上一个字符的最长长度，也就是失配字符前面的模式串的前后缀最长长度，当T0,Tk-1,Tk与Tj-K,Tj-1,Tj匹配时，Tk与Tj失配，那么下一步就是T[next[j]]与Tj匹配。
+![](http://img.blog.csdn.net/20150812214857858)
 ### 算法复杂度
 get_next函数，假设T的长度为m，其时间复杂度为O(m)，
 而i的不回溯使得效率得到提升，while循环的时间复杂度为O(n),故整个算法的时间复杂度为O(m+n)
