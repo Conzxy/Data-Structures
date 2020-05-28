@@ -61,7 +61,7 @@ int Violent_Match(String S,String T)
 ![](https://img-blog.csdnimg.cn/20200528135003574.gif)<br>
 如果对于值k，已有T0 T1, ..., Tk-1 = Tj-k Tj-k+1, ..., Tj-1，相当于next[j] = k，即前后缀字符的最大长度。<br>
 这意味着什么呢？究其本质，next[j] = k 代表p[j] 之前的模式串子串中，有长度为k 的相同前缀和后缀。有了这个next 数组，在KMP匹配中，当模式串中j 处的字符失配时，下一步用next[j]处的字符继续跟文本串匹配，相当于模式串向右移动j - next[j] 位。<br>
-![](http://img.blog.csdn.net/20140812223633281)
+![](http://img.blog.csdn.net/20140812223633281)<br>
 如下图：
 ![](https://imgconvert.csdnimg.cn/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTQwNzIxMjIzODA5NjE3?x-oss-process=image/format,png)
 ![](https://imgconvert.csdnimg.cn/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTQwNzIxMjIzNTM5NzY1?x-oss-process=image/format,png)<br>
@@ -150,7 +150,7 @@ get_next函数，假设T的长度为m，其时间复杂度为O(m)，
 显然②③④⑤是多余的，没必要重复匹配。
 用首位next[1]去取代与它相等的字符后续next[j]的值，可以提高效率。<br>
 上面这个例子有些极端，全部都相同。<br>
-我们再来看个不极端：
+我们再来看个不极端：<br>
 ![](https://imgconvert.csdnimg.cn/aHR0cDovL2hpLmNzZG4ubmV0L2F0dGFjaG1lbnQvMjAxMTA2LzE0LzgzOTQzMjNfMTMwODA3NTg1OVpmdWUuanBn?x-oss-process=image/format,png)<br>
 前三个都匹配，到了第四个不匹配了，那么根据next[j]，向右移动j-next[j]=3-1=2个位置
 ![](https://imgconvert.csdnimg.cn/aHR0cDovL2hpLmNzZG4ubmV0L2F0dGFjaG1lbnQvMjAxMTA2LzE0LzgzOTQzMjNfMTMwODA3NTg1OTFreVYuanBn?x-oss-process=image/format,png)<br>
