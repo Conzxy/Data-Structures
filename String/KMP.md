@@ -7,12 +7,12 @@ KMP发展自朴素模式匹配算法，但过于低效，难以处理多个0与1
 ### 图例分析
 令文本串S="goodgoogle"，模式串T="google"<br>
 则步骤如下：
-![](https://img-blog.csdnimg.cn/20200527182509944.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p4eTAxMjM0MA==,size_16,color_FFFFFF,t_70)
+![](https://img-blog.csdnimg.cn/20200527182509944.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p4eTAxMjM0MA==,size_16,color_FFFFFF,t_70)<br>
 前三个都匹配正常，第四个匹配失败。第一位匹配失败。
 ![](https://img-blog.csdnimg.cn/20200527182509732.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p4eTAxMjM0MA==,size_16,color_FFFFFF,t_70)
 ![](https://img-blog.csdnimg.cn/20200527182510428.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p4eTAxMjM0MA==,size_16,color_FFFFFF,t_70)
 ![](https://img-blog.csdnimg.cn/20200527182510451.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p4eTAxMjM0MA==,size_16,color_FFFFFF,t_70)
-![](https://img-blog.csdnimg.cn/20200527182510457.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p4eTAxMjM0MA==,size_16,color_FFFFFF,t_70)
+![](https://img-blog.csdnimg.cn/20200527182510457.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p4eTAxMjM0MA==,size_16,color_FFFFFF,t_70)<br>
 显然，第二、三、四位全部匹配失败,而第五位匹配成功，从第五位开始的6个字母全匹配。
 ### 算法分析
 朴素模式匹配算法就是文本串每个字符作为模式串开头来与子串匹配，
@@ -108,7 +108,7 @@ void get_next(String T,int *next)
     }
     else
     {
-      j=next[j];  //j回溯到上一个前缀
+      j=next[j];  //j回溯到失配字符的上一个字符所对应的最长长度
     }
   }
 }
@@ -144,14 +144,14 @@ get_next函数，假设T的长度为m，其时间复杂度为O(m)，
 而i的不回溯使得效率得到提升，while循环的时间复杂度为O(n),故整个算法的时间复杂度为O(m+n)
 ## KMP优化
 先来看个例子
-![](https://img-blog.csdnimg.cn/202005281030223.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p4eTAxMjM0MA==,size_16,color_FFFFFF,t_70)
+![](https://img-blog.csdnimg.cn/202005281030223.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p4eTAxMjM0MA==,size_16,color_FFFFFF,t_70)<br>
 显然②③④⑤是多余的，没必要重复匹配。
 用首位next[1]去取代与它相等的字符后续next[j]的值，可以提高效率。<br>
 上面这个例子有些极端，全部都相同。
 我们再来看个不极端：
-![](https://imgconvert.csdnimg.cn/aHR0cDovL2hpLmNzZG4ubmV0L2F0dGFjaG1lbnQvMjAxMTA2LzE0LzgzOTQzMjNfMTMwODA3NTg1OVpmdWUuanBn?x-oss-process=image/format,png)
+![](https://imgconvert.csdnimg.cn/aHR0cDovL2hpLmNzZG4ubmV0L2F0dGFjaG1lbnQvMjAxMTA2LzE0LzgzOTQzMjNfMTMwODA3NTg1OVpmdWUuanBn?x-oss-process=image/format,png)<br>
 前三个都匹配，到了第四个不匹配了，那么根据next[j]，向右移动j-next[j]=3-1=2个位置
-![](https://imgconvert.csdnimg.cn/aHR0cDovL2hpLmNzZG4ubmV0L2F0dGFjaG1lbnQvMjAxMTA2LzE0LzgzOTQzMjNfMTMwODA3NTg1OTFreVYuanBn?x-oss-process=image/format,png)
+![](https://imgconvert.csdnimg.cn/aHR0cDovL2hpLmNzZG4ubmV0L2F0dGFjaG1lbnQvMjAxMTA2LzE0LzgzOTQzMjNfMTMwODA3NTg1OTFreVYuanBn?x-oss-process=image/format,png)<br>
 向右移动2个位置依然匹配失败。但是T[next[3]]=T[1]=T[3],因此这个失败是必然的，如果将**T[next[j]]=T[j]**这步省略掉，KMP将会得到优化。
 ```cpp
 void get_nextval(String T,int *nextval)
