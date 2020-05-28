@@ -149,7 +149,7 @@ get_next函数，假设T的长度为m，其时间复杂度为O(m)，
 ![](https://img-blog.csdnimg.cn/202005281030223.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p4eTAxMjM0MA==,size_16,color_FFFFFF,t_70)<br>
 显然②③④⑤是多余的，没必要重复匹配。
 用首位next[1]去取代与它相等的字符后续next[j]的值，可以提高效率。<br>
-上面这个例子有些极端，全部都相同。
+上面这个例子有些极端，全部都相同。<br>
 我们再来看个不极端：
 ![](https://imgconvert.csdnimg.cn/aHR0cDovL2hpLmNzZG4ubmV0L2F0dGFjaG1lbnQvMjAxMTA2LzE0LzgzOTQzMjNfMTMwODA3NTg1OVpmdWUuanBn?x-oss-process=image/format,png)<br>
 前三个都匹配，到了第四个不匹配了，那么根据next[j]，向右移动j-next[j]=3-1=2个位置
