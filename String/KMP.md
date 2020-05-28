@@ -32,11 +32,11 @@ int Violent_Match(String S,String T)
     else
     {
       i=i-j+1;  //i回溯
-      j=0;      //j归0，子串重新匹配
+      j=0;      //j归0，模式串重新匹配
     }
   }
   if(j==T.length)
-    return i-j; //返回子串在主串的位置
+    return i-j; //返回模式串在文本串的位置
   else
     return -1;
 }
