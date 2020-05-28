@@ -4,6 +4,7 @@ using namespace std;
 
 int main()
 {
+  //根据测试需要自行去掉注释
 	String s("gogdgoogle");
 	String s1("abcdef");
 	String s2;
