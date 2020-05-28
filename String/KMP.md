@@ -138,7 +138,7 @@ int KMP_Match(String S,String T)
 }
 ```
 ### 代码部分解析
-j=next[j]是要去找长度更小的相同前缀后缀
+j=next[j]是要去找长度更小的相同前缀后缀.<br>
 next数组存的都是失配字符的上一个字符的最长长度，也就是失配字符前面的模式串的前后缀最长长度，当T0,Tk-1,Tk与Tj-K,Tj-1,Tj匹配时，Tk与Tj失配，那么下一步就是T[next[j]]与Tj匹配。
 ![](http://img.blog.csdn.net/20150812214857858)
 ### 算法复杂度
