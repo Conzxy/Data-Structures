@@ -52,8 +52,8 @@ void MergeSort_top_to_bottom(List& L,int low,int high)
     if(low<high)  //子序列有两个及以上元素
     {
       mid=(low+high)/2;
-      MergeSort(L,low,mid);     //对[low,mid]子序列排序
-      MergeSort(L,mid+1,high);  //对[mid+1,high]子序列排序
+      MergeSort_top_to_bottom(L,low,mid);     //对[low,mid]子序列排序
+      MergeSort_top_to_bottom(L,mid+1,high);  //对[mid+1,high]子序列排序
       Merge(L,low,mid,high);    //合并两个子序列
     }
 }
