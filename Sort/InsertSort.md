@@ -19,7 +19,7 @@ void InsertSort(List &L)
           L[j+1]=L[j];    //将有序区中比temp大的都右移，让出位置
         }
       }
-      L[j+1]=temp;        //插在L[j]<=temp后面或L[0]
+      L[j+1]=temp;        //注意之前for的j--
     }
 }
 ```
