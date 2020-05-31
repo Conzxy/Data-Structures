@@ -24,12 +24,16 @@ public:
             fin >> arr[i];
             i++;
             size=i;
-            /*if (getchar() == '\n')
-            {
-                size = i;
-                break;
-            }*/
         }
+        /*while(cin>>arr[i])
+        {
+          i++;
+          if (getchar() == '\n')
+          {
+              size = i;
+              break;
+          }
+        }*/
     }
 
     int length() { return size; }
