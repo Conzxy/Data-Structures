@@ -16,17 +16,17 @@ void QuickSort(List &L,int left,int right)
     {
       while(l!=r)
       {
-        while(l<r&&L[l]<temp)
-        {
-          l++;
-        }
-        L[r]=temp;
-
-        while(l<r&&L[r]>temp)
+        while(l<r&&L[r]>=temp)
         {
           r--;
         }
-        L[l]=temp;
+        L[l]=L[r];
+
+        while(l<r&&L[l]<=temp)
+        {
+          l++;
+        }
+        L[r]=L[l];
       }
       L[l]=temp;
       QuickSort(L,left,l-1);

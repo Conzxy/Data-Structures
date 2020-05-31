@@ -21,22 +21,22 @@ int Getkey(int value,int k) //第k位的数
     return key;
 }
 
-void Distribute(List &L,int k,list<int> lists)
+void Distribute(List &L,int k,list<int> *lists)
 {
     for(int i=0;i<L.size;i++)
     {
-      int index==Getkey(L[i],k);
-      lists.[index].push_back(L[i]);
+      int index=Getkey(L[i],k);
+      lists[index].push_back(L[i]);
     }
 }
 
-void Collect(List &L,list<int> lists)
+void Collect(List &L,list<int> *lists)
 {
     int index=0;
     list<int>::iterator it;
     for(int i=0;i<10;i++)
     {
-      it=lists[i].begin()
+      it=lists[i].begin();
       while(it!=lists[i].end())
       {
         L[index++]=*(it++);

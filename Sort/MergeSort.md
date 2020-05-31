@@ -17,25 +17,25 @@ void Merge(List &L,int low,int mid,int high)
 {
     int i=low,j=mid+1;
     int k=0;
-    int *temp=new int(high-low+1);
+    int *temp=new int[high-low+1];
     while(i<=mid&&j<=high)
     {
       if(L[i]<=L[j])  //将第一子表放入temp
       {
-        temp[k++]=temp[i++];
+        temp[k++]=L[i++];
       }
       else            //将第二子表放入temp
       {
-        temp[k++]=temp[j++];
+        temp[k++]=L[j++];
       }
     }
     while(i<=mid)     //第一子表剩余的放入temp
     {
-      temp[k++]=temp[i++];
+      temp[k++]=L[i++];
     }
     while(j<=high)    //第二子表剩余的放入temp
     {
-      temp[k++]=temp[j++];
+      temp[k++]=L[j++];
     }
     for(k=0,i=low;i<=high;i++,k++)
     {
@@ -67,18 +67,18 @@ void MergeSort_top_to_bottom(List& L,int low,int high)
 void MergePass(List &L,int length,int n)  //一趟二路归并（一个length对应一趟）
 {
       int i;
-      for(i=0;i+2*length-1<n;i++)   //长度为length的两个子表归并
+      for(i=0;i+2*length-1<n;i=i+length*2)   //长度为length的两个子表归并
       {
         Merge(L,i,i+length-1,i+2*length-1);
       }
       if(i+length-1<n)        //剩余两个子表归并（后者长度小于length）
       {
-        Merge(L,i,i+leng-1,n-1);
+        Merge(L,i,i+length-1,n-1);
       }
 }
 ```
 ```cpp
-void Merge_bottom_to_top(List &L,int length,int n)
+void MergeSort_bottom_to_top(List &L,int n)
 {
     for(int length=1;length<n;length=2*length)
     {

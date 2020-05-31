@@ -80,7 +80,7 @@ void HeapAdjust(List &L,int i,int len)
 {
       if(i>len/2-1)   //若无子树，直接退出
         return ;
-      for(int k=2*i+1;k<len;k++)
+      for(int k=2*i+1;k<len;k=2*k+1)
       {
         if(k+1<len&&L[k+1]>L[k])
         {
@@ -95,12 +95,12 @@ void HeapAdjust(List &L,int i,int len)
         else
           break;      //若满足大堆性质，则直接退出
       }
-    }
+}
 
 void HeapSort(List &L)
 {
     //从最后一个非叶子结点开始向前调整
-    for(int i=L.size/2-1;i<L.size;i--)
+    for(int i=L.size/2-1;i>=0;i--)
     {
       HeapAdjust(L,i,L.size);
     }

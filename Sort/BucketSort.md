@@ -43,5 +43,6 @@ void BucketSort(List &L)
         L[index++]=Buckets[i][j];
       }
     }
+    delete[]Buckets;
 }
 ```

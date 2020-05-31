@@ -12,32 +12,35 @@ void CountSort(List &L)
 {
     int i;
     int min=L[0],max=L[0];
-    for(i=1,i<L.size;i++)
+    for(i=1;i<L.size;i++)
     {
-      if(a[i]>max)
+      if(L[i]>max)
       {
-        max=a[i];
+        max=L[i];
       }
-      if(a[i]<min)
+      if(L[i]<min)
       {
-        min=a[i];
+        min=L[i];
       }
     }
     int range=max-min+1;
     int *count=new int[range];
-    memset(count.0,sizeof(int)*range);
+    memset(count,0,sizeof(int)*range);
 
-    for(i=0;i<range;i++)
+    for(i=0;i<L.size;i++)       //从原数组中取数，原数组个数为size
     {
       count[L[i]-min]++;
     }
 
     int index=0;
-    for(i=0;i<L.size;i++)
+    for(i=0;i<range;i++)        //从开辟的数组中读取，开辟的数组大小为range
     {
-      if(count[i]--)
+      while(count[i]--)
         L[index++]=i+min;
-      }
-      delete[]count;
+    }
+    delete[]count;
 }
 ```
+
+##算法复杂度
+计数排序是一种非基于比较的排序算法，其空间复杂度和时间复杂度均为 O(n+k)，其中 k 是整数的范围。

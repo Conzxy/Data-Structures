@@ -13,7 +13,7 @@ KMP发展自朴素模式匹配算法，但过于低效，难以处理多个0与1
 ![](https://img-blog.csdnimg.cn/20200527182510428.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p4eTAxMjM0MA==,size_16,color_FFFFFF,t_70)
 ![](https://img-blog.csdnimg.cn/20200527182510451.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p4eTAxMjM0MA==,size_16,color_FFFFFF,t_70)
 ![](https://img-blog.csdnimg.cn/20200527182510457.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p4eTAxMjM0MA==,size_16,color_FFFFFF,t_70)<br>
-显然，第二、三、四位全部匹配失败,而第五位匹配成功，从第五位开始的6个字母全匹配。
+显然，第二、三、四位全部匹配失败,而第五位匹配成功，从第五位开始的6个字母全匹配。<br>
 ### 算法分析
 朴素模式匹配算法就是文本串每个字符作为模式串开头来与子串匹配，
 这样对文本串做一个大循环，而模式串做T的长度的小循环，直到全部匹配。
@@ -53,7 +53,9 @@ int Violent_Match(String S,String T)
 两个步骤足矣，朴素匹配显得过于赘余。
 ### 2.前后缀匹配的情况
 ![](https://img-blog.csdnimg.cn/20200527182511356.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p4eTAxMjM0MA==,size_16,color_FFFFFF,t_70)<br>
-④⑤这两步显得多余，因为前面已经有ab匹配过了，没必要重复匹配。前缀与后缀重合的越多，赘余越多。
+④⑤这两步显得多余，因为前面已经有ab匹配过了，没必要重复匹配。前缀与后缀重合的越多，赘余越多。<br>
+
+最开始这个例子也是如此，其实在第一步就知道后面肯定失配，因为由这一步已经知道，S[1]=T[1]='o'!=T[0],S[2]=T[2]="o"!=T[0],T[3]=T[0]!=S[3],而这些没必要的匹配正是文本串回溯带来的弊端。<br>
 ### 总结：
 朴素匹配算法的文本串回溯在上述两种情况下显得赘余，降低了效率。因此将文本串回溯去掉，并且模式串相同前后缀省略是KMP的算法关键。
 ### KMP算法实现关键——next数组
