@@ -14,7 +14,9 @@
 ## 十大排序
 [排序封装类](https://github.com/tsubaki-san/Data-Structures/blob/master/Sort/List.h)<br>
 [测试代码](https://github.com/tsubaki-san/Data-Structures/blob/master/Sort/test.cpp)<br>
+
 ---
+
 [冒泡排序](https://github.com/tsubaki-san/Data-Structures/blob/master/Sort/Bubble%20Sort.md)<br>
 [选择排序](https://github.com/tsubaki-san/Data-Structures/blob/master/Sort/SelectSort.md)<br>
 [插入排序](https://github.com/tsubaki-san/Data-Structures/blob/master/Sort/InsertSort.md)<br>
