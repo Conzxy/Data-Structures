@@ -11,15 +11,15 @@ void InsertSort(List &L)
     int temp;
     for(i=1;i<L.size;i++)
     {
-      if(L[i-1]>L[i])
+      if(L[i-1]>L[i])     //发现反序元素
       {
-        temp=L[i];
+        temp=L[i];        
         for(j=i-1;j>=0&&L[j]>temp;j--)
         {
-          L[j+1]=L[j];
+          L[j+1]=L[j];    //将有序区中比temp大的都右移，让出位置
         }
       }
-      a[j+1]=temp;
+      L[j+1]=temp;        //插在L[j]<=temp后面或L[0]
     }
 }
 ```
