@@ -154,7 +154,7 @@ get_next函数，假设T的长度为m，其时间复杂度为O(m)，
 ![](https://imgconvert.csdnimg.cn/aHR0cDovL2hpLmNzZG4ubmV0L2F0dGFjaG1lbnQvMjAxMTA2LzE0LzgzOTQzMjNfMTMwODA3NTg1OVpmdWUuanBn?x-oss-process=image/format,png)<br>
 前三个都匹配，到了第四个不匹配了，那么根据next[j]，向右移动j-next[j]=3-1=2个位置
 ![](https://imgconvert.csdnimg.cn/aHR0cDovL2hpLmNzZG4ubmV0L2F0dGFjaG1lbnQvMjAxMTA2LzE0LzgzOTQzMjNfMTMwODA3NTg1OTFreVYuanBn?x-oss-process=image/format,png)<br>
-向右移动2个位置依然匹配失败。但是T[next[3]]=T[1]=T[3],因此这个失败是必然的，如果将**T[next[j]]=T[j]**这步省略掉，KMP将会得到优化。
+向右移动2个位置依然匹配失败。但是T[next[3]]=T[1]=T[3],因此这个失败是必然的，如果将`T[next[j]]=T[j]`这步省略掉，KMP将会得到优化。
 ```cpp
 void get_nextval(String T,int *nextval)
 {
