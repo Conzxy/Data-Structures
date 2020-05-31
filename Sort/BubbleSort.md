@@ -18,7 +18,7 @@ void BubbleSort(List &L)
   }
 }
 ```
-严格意义上，这并不能称得上冒泡排序，因为不是比较两个相邻元素，而是直接拿第i个元素和第j个元素对比，这样的话对第i个元素之后的序列没什么帮助。
+严格意义上，这并不能称得上冒泡排序，因为不是比较两个相邻元素，而是直接拿第i个元素和第j个元素对比，这样的话对第i个元素之后的序列没什么帮助。<br>
 ![](https://img-blog.csdnimg.cn/20200531005611411.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p4eTAxMjM0MA==,size_16,color_FFFFFF,t_70)<br>
 ## 第一层优化
 ```cpp
@@ -37,9 +37,9 @@ void BubbleSort_each(List &L)
   }
 }
 ```
-相邻两个交换，可以尽量使得除有序区元素外的元素不像上面那么无序
+相邻两个交换，可以尽量使得除有序区元素外的元素不像上面那么无序<br>
 ![](https://img-blog.csdnimg.cn/20200531005611464.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p4eTAxMjM0MA==,size_16,color_FFFFFF,t_70)<br>
-第一趟把2提到了第三位
+第一趟把2提到了第三位<br>
 ![](https://img-blog.csdnimg.cn/20200531005611362.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p4eTAxMjM0MA==,size_16,color_FFFFFF,t_70)<br>
 第二趟把3提到了第四位<br>
 数据越多，相邻交换的优势越大。
@@ -63,7 +63,7 @@ void BubbleSort_flag(List &L)
   }
 }
 ```
-通过设置flag来阻止对已排序序列的循环判断
+通过设置flag来阻止对已排序序列的循环判断<br>
 ![](https://img-blog.csdnimg.cn/2020053109350248.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p4eTAxMjM0MA==,size_16,color_FFFFFF,t_70)<br>
 ## 算术复杂度
 最好的情况（全部都是正序的情况下）:<br>
