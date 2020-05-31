@@ -12,8 +12,10 @@
 [AVL.h](https://github.com/tsubaki-san/Data-Structures/blob/master/Binary%20search%20tree/AVL.h)<br>
 [测试代码](https://github.com/tsubaki-san/Data-Structures/blob/master/Binary%20search%20tree/AVL_main.cpp)
 ## 十大排序
-[排序封装类](https://github.com/tsubaki-san/Data-Structures/blob/master/Sort/List.h)<br>
+[List.h](https://github.com/tsubaki-san/Data-Structures/blob/master/Sort/List.h)<br>
+[排序实现代码](https://github.com/tsubaki-san/Data-Structures/blob/master/Sort/Sort.cpp)<br>
 [测试代码](https://github.com/tsubaki-san/Data-Structures/blob/master/Sort/test.cpp)<br>
+[测试文件](https://github.com/tsubaki-san/Data-Structures/blob/master/Sort/test.txt)<br>
 
 ---
 
