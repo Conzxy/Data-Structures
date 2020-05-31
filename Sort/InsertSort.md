@@ -13,7 +13,7 @@ void InsertSort(List &L)
     {
       if(L[i-1]>L[i])     //发现反序元素
       {
-        temp=L[i];        
+        temp=L[i];        //临时变量记住要插入的元素
         for(j=i-1;j>=0&&L[j]>temp;j--)
         {
           L[j+1]=L[j];    //将有序区中比temp大的都右移，让出位置
@@ -23,10 +23,18 @@ void InsertSort(List &L)
     }
 }
 ```
-
+## 算法复杂度
+最好的情况（全都正序）：<br>
+比较次数：n-1<br>
+移动次数：0<br>
+最坏的情况（全都反序）：<br>
+比较次数：![](https://img-blog.csdnimg.cn/20200531122912813.gif)<br>
+移动次数：![](https://img-blog.csdnimg.cn/20200531122912809.gif)<br>
+平均比较和移动之和：
+![](https://img-blog.csdnimg.cn/20200531122921926.gif)<br>
 ## 折半插入排序
 ![](https://img2018.cnblogs.com/blog/1475571/201908/1475571-20190815205421177-1703010007.png)<br>
-相比直接插入仅仅在查找反序元素位置上提高了查找效率，移动数组元素照旧
+相比直接插入在查找反序元素位置上提高了查找效率，移动数组元素次数不变，仅仅将分散移动变为集合移动。
 ### 实现代码
 ```cpp
 void BinInsertSort(List &L)

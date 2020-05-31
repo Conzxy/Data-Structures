@@ -34,3 +34,12 @@ void QuickSort(List &L,int left,int right)
     }
 }
 ```
+## 算法复杂度
+最好的情况：<br>
+![](https://img2018.cnblogs.com/blog/1475571/201908/1475571-20190815212934570-941546711.png)<br>
+显然，空间复杂度为O(log2n)，而时间复杂度为O(nlog2n)<br>
+最坏的情况：<br>
+![](https://img2018.cnblogs.com/blog/1475571/201908/1475571-20190815213005838-477843633.png)<br>
+空间复杂度为O(n),时间复杂度为O(n^2)<br>
+平均情况：<br>
+![](https://img2018.cnblogs.com/blog/1475571/201908/1475571-20190815213040831-1022407683.png)
