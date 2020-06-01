@@ -19,7 +19,7 @@
 
 ---
 
-[冒泡排序](https://github.com/tsubaki-san/Data-Structures/blob/master/Sort/Bubble%20Sort.md)<br>
+[冒泡排序](https://github.com/tsubaki-san/Data-Structures/blob/master/Sort/BubbleSort.md)<br>
 [选择排序](https://github.com/tsubaki-san/Data-Structures/blob/master/Sort/SelectSort.md)<br>
 [插入排序](https://github.com/tsubaki-san/Data-Structures/blob/master/Sort/InsertSort.md)<br>
 [希尔排序](https://github.com/tsubaki-san/Data-Structures/blob/master/Sort/ShellSort.md)<br>
