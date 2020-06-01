@@ -54,7 +54,7 @@ int Violent_Match(String S,String T)
 ### 2.前后缀匹配的情况
 ![](https://img-blog.csdnimg.cn/20200527182511356.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p4eTAxMjM0MA==,size_16,color_FFFFFF,t_70)<br>
 （图中①出错了，应该是abcababca，不过也不匹配就对了）<br>
-④⑤这两步显得多余，因为前面已经有ab匹配过了，没必要重复匹配。前缀与后缀重合的越多，赘余越多。<br>
+④⑤这两步显得多余，因为前面已经前后缀匹配过了，又前后缀相同，造成了重复匹配。前缀与后缀重合的越多，赘余越多。<br>
 而且文本串不回溯，②③也可以省略。<br>
 ![](https://img-blog.csdnimg.cn/20200601224129320.png)<br>
 
