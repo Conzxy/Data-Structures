@@ -55,6 +55,7 @@ int Violent_Match(String S,String T)
 ![](https://img-blog.csdnimg.cn/20200527182511356.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p4eTAxMjM0MA==,size_16,color_FFFFFF,t_70)<br>
 （图中①出错了，应该是abcababca，不过也不匹配就对了）<br>
 ④⑤这两步显得多余，因为前面已经有ab匹配过了，没必要重复匹配。前缀与后缀重合的越多，赘余越多。<br>
+而且文本串不回溯，②③也可以省略。<br>
 
 最开始这个例子也是如此，其实在第一步就知道后面肯定失配，因为由这一步已经知道，S[1]=T[1]='o'!=T[0],S[2]=T[2]="o"!=T[0],T[3]=T[0]!=S[3],而这些没必要的匹配正是文本串回溯带来的弊端。<br>
 ### 总结：
@@ -64,6 +65,7 @@ int Violent_Match(String S,String T)
 ![](https://img-blog.csdnimg.cn/20200528135003574.gif)<br>
 如果对于值k，已有T0 T1, ..., Tk-1 = Tj-k Tj-k+1, ..., Tj-1，相当于next[j] = k，即前后缀字符的最大长度。<br>
 这意味着什么呢？究其本质，next[j] = k 代表p[j] 之前的模式串子串中，有长度为k 的相同前缀和后缀。有了这个next 数组，在KMP匹配中，当模式串中j 处的字符失配时，下一步用next[j]处的字符继续跟文本串匹配，相当于模式串向右移动j - next[j] 位。<br>
+（-1用于模式串没有相同前后缀，就会回到0再匹配，若还不行则文本串右移，模式串归0重新开始新一轮的匹配）
 ![](http://img.blog.csdn.net/20140812223633281)<br>
 如下图：<br>
 ![](https://imgconvert.csdnimg.cn/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTQwNzIxMjIzODA5NjE3?x-oss-process=image/format,png)
