@@ -184,8 +184,8 @@ void get_nextval(String T,int *nextval)
   }
 }
 ```
-设前后缀相同的字符为i个。<br>
-相比next数组，nextval增加了当前字符和第i+1个字符的判定，若相同，则next值替换为第i+1个字符的next值成为新的nextval值，不同，则照旧。
+相比next数组，nextval增加了当前字符和欲回溯字符的判定，若相同，则next值替换为欲回溯字符的next值成为新的nextval值，不同，则照旧。
+
 ### nextval数组
 #### e.g
 | j    | 0|1|2|3|4|5|6|7|8|
