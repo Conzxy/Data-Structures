@@ -104,7 +104,7 @@ void get_next(String T,int *next)
 {
   int i=0,j=-1;
   next[0]=-1;
-  while(i<T.length-1)
+  while(i<T.length-1)   //下标范围[0,length-1]
   {
     if(j==-1||T[i]==T[j])
     //T[i]表示后缀，T[j]表示前缀
@@ -171,7 +171,7 @@ void get_nextval(String T,int *nextval)
     if(j==-1||T[i]==T[j])
     {
       i++;j++;
-      if(T[i]!=T[j])  //当前字符与前缀字符不同
+      if(T[i]!=T[j])  //当前字符与前缀不同
         nextval[i]=j;
       else
         nextval[i]=nextval[j];  
@@ -184,7 +184,7 @@ void get_nextval(String T,int *nextval)
   }
 }
 ```
-相比next数组，nextval增加了当前字符和前缀字符的判定，若相同，则回溯到前缀即可，不同，照旧。因为当前字符和前缀字符相同的话，中间的匹配是肯定失败的，因此没有必要，直接回溯到前缀即可。
+相比next数组，nextval增加了当前字符和前缀的判定，若相同，则回溯到前缀即可，不同，照旧。因为当前字符和前缀相同的话，再度匹配是肯定失败的，因此没有必要，直接回溯到前缀即可。
 ### nextval数组
 #### e.g
 | j    | 0|1|2|3|4|5|6|7|8|
