@@ -193,4 +193,4 @@ void get_nextval(String T,int *nextval)
 | next[j]    | -1|0|0|1|2|3|1|1|2|
 |nextval[j]|-1|0|-1|0|-1|3|1|0|-1|  
 
-next转nextval只要看看要回溯的前缀后一字符和自己是不是相同就行了，若相同，就等于前缀后一字符的next值，否则，照旧。
+next转nextval只要看看要回溯的字符和自己是不是相同就行了，若相同，就等于回溯字符的next值，否则，照旧。
