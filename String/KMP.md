@@ -171,11 +171,11 @@ void get_nextval(String T,int *nextval)
     if(j==-1||T[i]==T[j])
     {
       i++;j++;
-      if(T[i]!=T[j])  //当前字符与前缀不同
+      if(T[i]!=T[j])  //当前字符与欲回溯字符不同
         nextval[i]=j;
       else
         nextval[i]=nextval[j];  
-        //若相同，则将前缀位置给当前字符
+        //若相同，则将回溯字符的前缀位置给当前字符
     }
     else
     {
