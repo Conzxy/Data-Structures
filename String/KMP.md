@@ -53,6 +53,7 @@ int Violent_Match(String S,String T)
 两个步骤足矣，朴素匹配显得过于赘余。
 ### 2.前后缀匹配的情况
 ![](https://img-blog.csdnimg.cn/20200527182511356.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p4eTAxMjM0MA==,size_16,color_FFFFFF,t_70)<br>
+（图中①出错了，应该是abcababca，不过也不匹配就对了）
 ④⑤这两步显得多余，因为前面已经有ab匹配过了，没必要重复匹配。前缀与后缀重合的越多，赘余越多。<br>
 
 最开始这个例子也是如此，其实在第一步就知道后面肯定失配，因为由这一步已经知道，S[1]=T[1]='o'!=T[0],S[2]=T[2]="o"!=T[0],T[3]=T[0]!=S[3],而这些没必要的匹配正是文本串回溯带来的弊端。<br>
