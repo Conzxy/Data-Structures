@@ -228,7 +228,7 @@ int String::find(String const &T)
       //KMP
       assert(T.p_str != nullptr);
       int i=0,j=0;
-      int nextval[T.length]//gcc
+      int nextval[T.length];//gcc
       //int nextval[100];//vs
       get_nextval(T, nextval);
       //for (int i = 0; i < T.length; i++) { cout << nextval[i] << "|"; }
