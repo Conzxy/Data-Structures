@@ -64,7 +64,7 @@ int Find(vector<int> parent,int f)
 ```
 Kruskal
 ```cpp
-void MinispanTreeKruskal(int numvertex,int numedge,vector<EdgeInf<string,int>> &edgeInf,vector<EdgeInf<string,int>> &finaledge)
+void MinispanTreeKruskal(int numvertex,int numedge,vector<EdgeInf<string,int>> const&edgeInf,vector<EdgeInf<string,int>> &finaledge)
 {
   int m,n;
   int parent(numvertex,0);  //初始化parent
