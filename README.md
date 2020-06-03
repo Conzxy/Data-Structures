@@ -4,6 +4,8 @@
 [String.cpp](https://github.com/tsubaki-san/Data-Structures/blob/master/String/String.cpp)<br>
 [测试代码](https://github.com/tsubaki-san/Data-Structures/blob/master/String/test.cpp)<br>
 [KMP讲解](https://github.com/tsubaki-san/Data-Structures/blob/master/String/KMP.md)
+## 图
+[kruskal讲解](https://github.com/Conzxy/Data-Structures/blob/master/Graph/Minimum%20Spanning%20Tree%E2%80%94%E2%80%94Kruskal.md)<br>
 ## 二叉搜索树
 [BST.h](https://github.com/tsubaki-san/Data-Structures/blob/master/Binary%20search%20tree/BST.h)<br>
 [测试代码](https://github.com/tsubaki-san/Data-Structures/blob/master/Binary%20search%20tree/main.cpp)
