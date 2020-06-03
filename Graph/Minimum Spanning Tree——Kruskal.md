@@ -79,6 +79,8 @@ void MinispanTreeKruskal(int numvertex,int numedge,vector<EdgeInf<string,int>> &
   }
 }
 ```
+n=m说明了有两颗树，它们的根结点是相同的，那么它们就是连通的，如果再添上一笔连接在一起就会形成环，而这正是我们要避免的。<br>
+而parent[m]=n的作用就是将一个个没有连通的树或结点连接在一起，最后形成最小生成树。<br>
 ## 实例讲解
 ![](https://img-blog.csdnimg.cn/20200603093015119.png)<br>
 边集数组为：<br>
