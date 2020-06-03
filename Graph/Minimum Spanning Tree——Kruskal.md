@@ -117,5 +117,5 @@ void MinispanTreeKruskal(int numvertex,int numedge,vector<EdgeInf<string,int>> &
 14）3，6，v3与v6的根结点都是v7，不能连线<br>
 15）4，5，v4与v5的根结点都是v7，不能连线<br>
 
-最终最小生成树的连接情况：
+最终最小生成树的连接情况：<br>
 ![](https://img-blog.csdnimg.cn/20200603101833805.png)<br>
