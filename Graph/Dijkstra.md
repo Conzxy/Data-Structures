@@ -34,20 +34,21 @@ void Dijkstra(int numv,int v,vector<int>& d,vector<int>& p,vector<vector<int>> c
     }
     for(int i=0;i<numv;i++)
     {
-      min=INF;  //点权置为无穷大
+      min=INF;  //点权设为无穷大
       for(int j=0;j<numv;j++)
       {
         if(!final[j]&&d[j]<min)
         {
-          min=d[j];
-          k=j;
+          min=d[j]; 
+          k=j ;    //当前最小点权对应顶点
         }
       }
       final[k]=true;  //记录离v最近的顶点
       for(int w=0;w<numv;w++)
       {
-        if(!final[i]&&min+g[k][w]<d[w]) //若i到k的距离加上k到w的距离比i到w的距离小，则调整i到w的距离
+        if(!final[w]&&min+g[k][w]<d[w]) //若v到k的距离加上k到w的距离比v到w的距离小，则调整v到w的距离
         {
+          //松弛操作
           d[w]=min+g[k][w];
           p[w]=k;   //p记录w的前驱
         }
@@ -56,23 +57,23 @@ void Dijkstra(int numv,int v,vector<int>& d,vector<int>& p,vector<vector<int>> c
 }
 ```
 ### 时间复杂度
-两个for循环，所以为O(n^2)。
+嵌套for循环，所以为O(n^2)。
 
 ## 堆优化
 运用STL中优先队列的性质可以构造小顶堆（或大顶堆），这样时间复杂度会提升到O(eloge)。
 
 ### 实现代码
 ```cpp
-typedef pair<int,int> ipair
+typedef pair<int,int> ipair;
 //adj存入的是顶点邻接边的另一端和边权值
-void addedge_non_direct(vector<ipair> *adj,int u,int v,int wt)//无向图
+void addedge_non_direct(vector<ipair> *adj,int u,int v,int wt=1)//无向图
 {
     //双向记录该边的另一端和边权
     adj[u].push_back(make_pair(v,wt));  
     adj[v].push_back(make_pair(u,wt));
 }
 
-void addedge_direct(vector<ipair> *adj,int u,int v,int wt)//有向图
+void addedge_direct(vector<ipair> *adj,int u,int v,int wt=1)//有向图
 {
     //单向记录该边的另一端和边权
     adj[u].push_back(make_pair(v,wt));
@@ -125,7 +126,7 @@ void Dijkstra_heap(vector<ipair> *adj,int numv,int v)
 ![](https://img-blog.csdnimg.cn/20200603230105328.png)<br>
 (如果是1开始的，可以在调用函数时令其减一，所以下面都会比图上数字少1)
 源点设为1，无权设边权都为1，即边数，dist[0]=0,<br>
-1）看1的邻接边只有5，因此dist[4]=1，即1到5的最短路径为1；<br>
+1）看1的邻接边只有5，5的点权为∞，因此dist[4]=1，即1到5的最短路径为1；<br>
 2）接下来看5的邻接边有6和2，根据一开始压入的顺序决定谁先开始，但是不管谁先都一样，因为小顶堆的性质决定了谁先pop，现在6的点权是∞，所以dist[5]=2；<br>
 3）接下来看5的邻接边2，2的点权为∞，所以dist[1]=2；<br>
 4）现在pop顶点2，2的邻接边有4，1，但是1不予考虑，俗话说的好：好牛不吃回头草，因为对于访问过的结点，dist[u]+weight<dist[s]是不可能的，在求dist[u]的过程中就已经经过了s了，加上边权是必然大于dist[s]的，这里可以设置个bool数组来记录访问过的顶点，这样也可以减少时间消耗，当然也牺牲了空间开销（空间换时间）。这样直接访问4，4的点权是∞，所以dist[3]=3，同时压入顶点4；<br>
@@ -145,11 +146,11 @@ int main ()
     {
         cin>>u>>v;  //边头部和尾部
         if(direct==0){
-            addedge_non_direct(adj,u-1,v-1,1);  //无权将边权置为1来表示边数
+            addedge_non_direct(adj,u-1,v-1);  //无权将边权置为1来表示边数，若有权则覆盖默认实参
         }
         else
         {
-            addedge_direct(adj,u-1,v-1,1);
+            addedge_direct(adj,u-1,v-1);
         }
     }
     cin>>s;     //源点
