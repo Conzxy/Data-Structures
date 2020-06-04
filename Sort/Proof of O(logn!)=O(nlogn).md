@@ -1,5 +1,5 @@
 # O(logn!)=O(nlogn)
-我们可以证明logn！小于nlogn而大于一个常数倍的nlogn。<br>
+我们可以证明logn！小于nlogn而大于一个常数倍的nlogn(当n大于某一常数时）。<br>
 下面给出推导过程：<br>
 对于n>0，显然logn！<=nlogn是显然成立的<br>
 ![](https://img-blog.csdnimg.cn/20200604222939384.gif)<br>
