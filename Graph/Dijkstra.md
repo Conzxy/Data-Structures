@@ -109,7 +109,7 @@ void Dijkstra_heap(vector<ipair> *adj,int numv,int v)
           }
       //}
       }
-      //final[u]=true;                      //表示该点的邻接边已经全部访问了
+      //final[u]=true;                      //表示该点的邻接边已经全部访问了并防止吃回头草
     }
     for(int i=0;i<numv;i++)
     {
