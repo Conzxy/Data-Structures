@@ -22,6 +22,28 @@ pop出A中最小权值的顶点a<br>
 
 ## 实现代码
 ```cpp
+//direct是有向依据，numv是顶点个数，nume是边数
+void getMatrix(vector<vector<int>> &g,int direct,int numv,int nume)
+{
+    for(int i=0;i<numv;i++)
+        for(int j=0;j<numv;j++)
+    {
+        if(i==j)
+            g[i].push_back(0);
+        else
+            g[i].push_back(INF);
+    }
+    for(int i=0;i<nume;i++)
+    {   
+        int u,v;
+        cin>>u>>v;
+        if(direct==1)
+            g[u-1][v-1]=1;
+        else
+            g[u-1][v-1]=g[v-1][u-1]=1;
+    }
+}
+
 void Dijkstra(int numv,int v,vector<int>& d,vector<int>& p,vector<vector<int>> const&g)
 {
     int min,k;  
@@ -60,6 +82,24 @@ void Dijkstra(int numv,int v,vector<int>& d,vector<int>& p,vector<vector<int>> c
 ### 时间复杂度
 嵌套for循环，所以为O(n^2)。
 
+### 测试代码
+```cpp
+int main ()
+{
+    int numv,nume,direct,u,v,s;
+    cin>>numv>>nume>>direct;//顶点数，边数，有向依据
+    
+    vector<vector<int>> g(numv);
+    getMatrix(g,direct,numv,nume);
+    
+    cin>>s;
+    vector<int> d(numv);
+    Dijkstra(numv,s-1,d,g);
+    
+    return 0;
+}
+
+```
 ## 堆优化
 运用STL中优先队列的性质可以构造小顶堆（或大顶堆），这样时间复杂度会提升到O(eloge)。
 
