@@ -25,25 +25,25 @@ pop出A中最小权值的顶点a<br>
 void Dijkstra(int numv,int v,vector<int>& d,vector<int>& p,vector<vector<int>> const&g)
 {
     int min,k;  
-    vector<bool> final(numv,false); //记录访问过的顶点
-    d[v]=0;     //v到v的距离为0
-    final[0]=true;  //v不需要再访问了
+    vector<bool> final(numv,false);     //记录访问过的顶点
+    d[v]=0;                             //v到v的距离为0
+    final[0]=true;                      //v不需要再访问了=>防止吃回头草
     for(int i=0;i<numv;i++)
     {
-      d[i]=g[v][i]; //记录v的临界边
+      d[i]=g[v][i];                     //记录v的临界边
     }
     for(int i=0;i<numv;i++)
     {
-      min=INF;  //点权设为无穷大
+      min=INF;                          //点权设为无穷大
       for(int j=0;j<numv;j++)
       {
         if(!final[j]&&d[j]<min)
         {
-          min=d[j]; //记录当前最小点权
-          k=j ;    //当前最小点权对应顶点
+          min=d[j];                     //记录当前最小点权
+          k=j ;                         //当前最小点权对应顶点
         }
       }
-      final[k]=true;  //记录离v最近的顶点已访问过
+      final[k]=true;                    //记录最小点权的顶点已访问过
       for(int w=0;w<numv;w++)
       {
         //松弛操作体现的就是贪心算法，基于现在的最短路径去求得更远处的最短路径
@@ -51,7 +51,7 @@ void Dijkstra(int numv,int v,vector<int>& d,vector<int>& p,vector<vector<int>> c
         {
           //松弛操作
           d[w]=min+g[k][w];
-          p[w]=k;   //p记录w的前驱
+          p[w]=k;           //p记录w的前驱
         }
       }
     }
@@ -84,24 +84,24 @@ void Dijkstra_heap(vector<ipair> *adj,int numv,int v)
 {
     priority_queue<ipair,vector<ipair>,greater<ipair>> pq;
     //优先队列，按great排序可以构造小根堆，ipair将依次比较first，second
-    vector<int> dist(numv,INF);    //将其他点权置为无穷大
-    dist[v]=0;    //源点点权置为0
-    //vector<bool> final(numv,false);//若顶点比较少，实在没必要
-    pq.push(make_pair(0,v));  //将源点放在堆顶
+    vector<int> dist(numv,INF);             //将其他点权置为无穷大
+    dist[v]=0;                              //源点点权置为0
+    //vector<bool> final(numv,false);       //若顶点比较少，实在没必要
+    pq.push(make_pair(0,v));                //将源点放在堆顶
     //pq.push(make_pair(dist[v],v));
 
 
     while(!pq.empty())
     {
-      int u=pq.top().second;  //取当前最小点权值对应的顶点
+      int u=pq.top().second;                //取当前最小点权值对应的顶点
       pq.pop();
 
-      for(auto x:adj[u])  //adj[u]的first保存u邻接边的另一端，second保存边权
+      for(auto x:adj[u])                    //adj[u]的first保存u邻接边的另一端，second保存边权
       {
         //if(!final[u]){
-          int s=x.first;  //邻接边的另一端
-          int weight=x.second;  //邻接边的边权
-          if(dist[u]+weight<dist[s])  //可以松弛
+          int s=x.first;                    //邻接边的另一端
+          int weight=x.second;              //邻接边的边权
+          if(dist[u]+weight<dist[s])        //可以松弛
           {
             //松弛操作
             dist[s]=dist[u]+weight;
@@ -109,15 +109,15 @@ void Dijkstra_heap(vector<ipair> *adj,int numv,int v)
           }
       //}
       }
-      //final[u]=true;
+      //final[u]=true;                      //表示该点的邻接边已经全部访问了
     }
     for(int i=0;i<numv;i++)
     {
         if(dist[i]==INF)
         {
-          dist[i]=-1; //置为-1表示不存在到该顶点的最短路径
+          dist[i]=-1;                       //置为-1表示不存在到该顶点的最短路径
         }
-        cout<<dist[i]<<" "; //输出源点到每个顶点的最短路径
+        cout<<dist[i]<<" ";                 //输出源点到每个顶点的最短路径
     }
 }
 ```
