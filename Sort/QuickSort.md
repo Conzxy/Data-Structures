@@ -10,17 +10,17 @@
 ```cpp
 void QuickSort(List &L,int left,int right)
 {
-    int l=left,r=right;
-    int temp=L[left];
+    int l=left,r=right;         //记录此时的左边界和右边边
+    int temp=L[left];           //记录左边界为pivot
     if(l<r)
     {
       while(l!=r)
       {
-        while(l<r&&L[r]>=temp)
+        while(l<r&&L[r]>=temp)  //如果右边的元素大于等于pivot则正常
         {
-          r--;
+          r--;              //向pivot靠近
         }
-        L[l]=L[r];
+        L[l]=L[r];          //若小于pivot，则调整
 
         while(l<r&&L[l]<=temp)
         {
@@ -28,9 +28,9 @@ void QuickSort(List &L,int left,int right)
         }
         L[r]=L[l];
       }
-      L[l]=temp;
-      QuickSort(L,left,l-1);
-      QuickSort(L,l+1,right);
+      L[l]=temp;    //最终r<l失败，令其为pivot。
+      QuickSort(L,left,l-1);    //划分[left,...,l-1]并进行排序
+      QuickSort(L,l+1,right);   //划分[l+1,...,right]并进行排序
     }
 }
 ```
