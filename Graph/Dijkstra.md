@@ -39,13 +39,14 @@ void Dijkstra(int numv,int v,vector<int>& d,vector<int>& p,vector<vector<int>> c
       {
         if(!final[j]&&d[j]<min)
         {
-          min=d[j]; 
+          min=d[j]; //记录当前最小点权
           k=j ;    //当前最小点权对应顶点
         }
       }
-      final[k]=true;  //记录离v最近的顶点
+      final[k]=true;  //记录离v最近的顶点已访问过
       for(int w=0;w<numv;w++)
       {
+        //松弛操作体现的就是贪心算法，基于现在的最短路径去求得更远处的最短路径
         if(!final[w]&&min+g[k][w]<d[w]) //若v到k的距离加上k到w的距离比v到w的距离小，则调整v到w的距离
         {
           //松弛操作
