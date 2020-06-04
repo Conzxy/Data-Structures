@@ -22,6 +22,28 @@ pop出A中最小权值的顶点a<br>
 
 ## 实现代码
 ```cpp
+//direct是有向依据，numv是顶点个数，nume是边数
+void getMatrix(vector<vector<int>> &g,int direct,int numv,int nume)
+{
+    for(int i=0;i<numv;i++)
+        for(int j=0;j<numv;j++)
+    {
+        if(i==j)
+            g[i].push_back(0);
+        else
+            g[i].push_back(INF);
+    }
+    for(int i=0;i<nume;i++)
+    {   
+        int u,v;
+        cin>>u>>v;
+        if(direct==1)
+            g[u-1][v-1]=1;
+        else
+            g[u-1][v-1]=g[v-1][u-1]=1;
+    }
+}
+
 void Dijkstra(int numv,int v,vector<int>& d,vector<int>& p,vector<vector<int>> const&g)
 {
     int min,k;  
@@ -60,6 +82,24 @@ void Dijkstra(int numv,int v,vector<int>& d,vector<int>& p,vector<vector<int>> c
 ### 时间复杂度
 嵌套for循环，所以为O(n^2)。
 
+### 测试代码
+```cpp
+int main ()
+{
+    int numv,nume,direct,u,v,s;
+    cin>>numv>>nume>>direct;//顶点数，边数，有向依据
+    
+    vector<vector<int>> g(numv);
+    getMatrix(g,direct,numv,nume);
+    
+    cin>>s;
+    vector<int> d(numv);
+    Dijkstra(numv,s-1,d,g);
+    
+    return 0;
+}
+
+```
 ## 堆优化
 运用STL中优先队列的性质可以构造小顶堆（或大顶堆），这样时间复杂度会提升到O(eloge)。
 
@@ -130,7 +170,7 @@ void Dijkstra_heap(vector<ipair> *adj,int numv,int v)
 1）看1的邻接边只有5，5的点权为∞，因此dist[4]=1，即1到5的最短路径为1；<br>
 2）接下来看5的邻接边有6和2，根据一开始压入的顺序决定谁先开始，但是不管谁先都一样，因为小顶堆的性质决定了谁先pop，现在6的点权是∞，所以dist[5]=2；<br>
 3）接下来看5的邻接边2，2的点权为∞，所以dist[1]=2；<br>
-4）现在pop顶点2，2的邻接边有4，1，但是1不予考虑，俗话说的好：好牛不吃回头草，因为对于访问过的结点，dist[u]+weight<dist[s]是不可能的，在求dist[u]的过程中就已经经过了s了，加上边权是必然大于dist[s]的，这里可以设置个bool数组来记录访问过的顶点，这样也可以减少时间消耗，当然也牺牲了空间开销（空间换时间）。这样直接访问4，4的点权是∞，所以dist[3]=3，同时压入顶点4；<br>
+4）现在pop顶点2，2的邻接边有4，1，但是1不予考虑，俗话说的好：好牛不吃回头草，因为对于访问过的结点，dist[u]+weight<dist[s]是不可能的，在求dist[u]的过程中就已经经过s了，加上边权是必然大于dist[s]的，这里可以设置个bool数组来记录访问过的顶点，这样也可以减少时间消耗，当然也牺牲了空间开销（空间换时间）。这样直接访问4，4的点权是∞，所以dist[3]=3，同时压入顶点4；<br>
 5）顶点6的点权比4小，先pop顶点6，6的邻接边有3，2，6到2行不通，因为1到6再到2的路径是3，而2的点权现在是2，if肯定失败。6到3，现在3的点权是∞，所以dist[2]=3，压入顶点3；<br>
 6）现在优先队列中只有3和4，点权相等，但根据比较器，先pop顶点3，3只有邻接边2，比较肯定失败，因为dist[3]>dist[2]，跟别说加上边权了；<br>
 7）pop顶点4，4的邻接边有1，3，但是都是已经访问过的，比较肯定失败；<br>
