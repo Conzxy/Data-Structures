@@ -44,6 +44,6 @@ void QuickSort(List &L,int left,int right)
 如果pivot为最大元素或最小元素，则会出现空序列和n-1的子序列，如果重复出现，则每次处理的子序列都比上次小1，这种情况下，递归树变成了n-1个嵌套调用的线性链。时间复杂度：![](https://img-blog.csdnimg.cn/20200605134159701.gif)<br>
 同时，递归树深度为n-1（从0开始计数，因为深度为0是非递归调用），所以空间复杂度=O(n).<br>
 ### 平均情况：
-![](https://img2018.cnblogs.com/blog/1475571/201908/1475571-20190815213040831-1022407683.png)
-![](https://img-blog.csdnimg.cn/20200605193437284.png)
-![](https://img-blog.csdnimg.cn/20200605193437406.png)
+![](https://img2018.cnblogs.com/blog/1475571/201908/1475571-20190815213040831-1022407683.png)<br>
+![](https://img-blog.csdnimg.cn/20200605193437284.png)<br>
+![](https://img-blog.csdnimg.cn/20200605193437406.png)<br>
