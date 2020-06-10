@@ -8,8 +8,8 @@
 template<typename> class LQueue;
 template<typename T>
     void swap(LQueue<T>&,LQueue<T>&);
-template<typename T>
-    void printLQueue(const LQueue<T>&);
+//template<typename T>
+    //void printLQueue(const LQueue<T>&);
 template<typename DataType>
 class LQueue
 {
@@ -158,7 +158,7 @@ public:
 
 public:
     friend void swap<DataType>(LQueue<DataType>&,LQueue<DataType>&);
-    friend void printLQueue<DataType>(const LQueue<DataType>&);
+    //friend void printLQueue<DataType>(const LQueue<DataType>&);
 private:
     int theSize;
     Node* front;

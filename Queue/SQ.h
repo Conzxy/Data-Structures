@@ -23,7 +23,7 @@ public:
     //initializer list construct
     Queue(std::initializer_list<Datatype> Q)
     {
-        init(Q.size());
+        init(30);
         for(auto &x:Q)
         {
             EnQueue(x);
@@ -75,6 +75,15 @@ public:
         theSize++;
     }
 
+    void EnQueue(Datatype&& x)
+    {
+        if(full())
+            return ;
+        data[rear]=x;
+        rear=(rear+1)%maxSize;
+        theSize++;
+    }
+
     void DeQueue()
     {
         if(empty())
@@ -83,14 +92,24 @@ public:
         theSize--;
     }
 
-    Datatype _front()const
+    const Datatype& top()const
     {
         return data[front];
     }
 
-    Datatype back()const
+    Datatype& top()
     {
-        return data[rear];
+        return data[front];
+    }
+
+    const Datatype& back()const
+    {
+        return data[rear-1];
+    }
+
+    Datatype& back()
+    {
+        return data[rear-1];
     }
 
     bool full()const
@@ -103,7 +122,7 @@ public:
         return theSize==0;
     }
 
-    int Size()const
+    const int Size()const
     {
         return theSize;
     }
