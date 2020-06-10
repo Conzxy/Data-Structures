@@ -1,5 +1,6 @@
 #include "SQ.h"
-
+#include "LQ.h"
+#include <string>
 using namespace std;
 
 void solve1()
@@ -19,4 +20,22 @@ void solve1()
             Q.DeQueue();
     }
     printQueue(Q);
+}
+
+void solve2()
+{
+    LQueue<int> Q;
+    string str;
+    int x;
+    while(cin>>str&&str!="end")
+    {
+        if(str=="in")
+        {
+            cin>>x;
+            Q.push(x);
+        }
+        else if(str=="out")
+            Q.pop();
+    }
+    printLQueue(Q);
 }

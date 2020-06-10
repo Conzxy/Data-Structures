@@ -7,18 +7,20 @@
 
 template<typename> class Queue;
 template<typename T>
-void printQueue(const Queue<T>&);
+    void printQueue(const Queue<T>&);
 template<typename T>
-void swap(Queue<T>&,Queue<T>&);
+    void swap(Queue<T>&,Queue<T>&);
 
 template<class Datatype>
 class Queue
 {
 public:
+    //default construct
     Queue(int m=10)//lvalue?
     {
         init(m);
     }
+    //initializer list construct
     Queue(std::initializer_list<Datatype> Q)
     {
         init(Q.size());
@@ -36,6 +38,7 @@ public:
             //*(data+i)=*(rhs.data+i);
             data[i]=rhs.data[i];
     }
+
     Queue& operator=(const Queue &rhs)
     {
         //std::cout<<"run"<<std::endl;
@@ -50,12 +53,18 @@ public:
         swap(*this,rhs);
         return *this;
     }*/
-    
+
+    Queue(Queue&& rhs):front(rhs.front),rear(rhs.rear),maxSize(rhs.maxSize),theSize(rhs.theSize),data(rhs.data)
+    {
+        rhs.front=rhs.rear=rhs.maxSize=rhs.theSize=0;
+        rhs.data=nullptr;
+    }
     Queue& operator=(Queue&& rhs)
     {
-        std::swap(*this,rhs);
+        swap(*this,rhs);
         return *this;
     }
+
 public:
     void EnQueue(const Datatype& x)
     {
