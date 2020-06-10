@@ -36,19 +36,21 @@ public:
             //*(data+i)=*(rhs.data+i);
             data[i]=rhs.data[i];
     }
-    Queue& operator=(Queue rhs)
+    Queue& operator=(const Queue &rhs)
     {
-        //Queue _copy=rhs;
-        //std::swap(*this,_copy);
-        swap(*this,rhs);
+        //std::cout<<"run"<<std::endl;
+        Queue copy=rhs;
+        //std::swap(*this,copy);
+        swap(*this,copy);
         return *this;
     }
 
-    Queue(Queue&& rhs):front(rhs.front),rear(rhs.rear),maxSize(rhs.maxSize),theSize(rhs.theSize),data(rhs.data)
+    /*Queue& operator=(Queue rhs)
     {
-        rhs.front=rhs.rear=rhs.maxSize=rhs.theSize=0;
-        rhs.data=nullptr;
-    }
+        swap(*this,rhs);
+        return *this;
+    }*/
+    
     Queue& operator=(Queue&& rhs)
     {
         std::swap(*this,rhs);
