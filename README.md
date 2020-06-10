@@ -1,4 +1,12 @@
 # Data-Structures
+## 链表(内置迭代器)
+[ListList.h](https://github.com/Conzxy/Data-Structures/blob/master/LinkList/LinkList.h)<br>
+[课设解决方案](https://github.com/Conzxy/Data-Structures/blob/master/LinkList/solve%20Implement.cpp)<br>
+[main.cpp](https://github.com/Conzxy/Data-Structures/blob/master/LinkList/main.cpp)<br>
+## 队列
+[循环队列](https://github.com/Conzxy/Data-Structures/blob/master/Queue/SQ.h)<br>
+[课设解决方案](https://github.com/Conzxy/Data-Structures/blob/master/Queue/solve%20Implement.cpp)<br>
+[main.cpp](https://github.com/Conzxy/Data-Structures/blob/master/Queue/main.cpp)<br>
 ## 串
 [String.h](https://github.com/tsubaki-san/Data-Structures/blob/master/String/String.h)<br>
 [String.cpp](https://github.com/tsubaki-san/Data-Structures/blob/master/String/String.cpp)<br>
