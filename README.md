@@ -14,6 +14,9 @@
 [测试代码](https://github.com/tsubaki-san/Data-Structures/blob/master/String/test.cpp)<br>
 [KMP讲解](https://github.com/tsubaki-san/Data-Structures/blob/master/String/KMP.md)
 ## 图
+[并查集（Union-Find Set）](https://github.com/Conzxy/Data-Structures/blob/master/Graph/Union_Find%20set.md)<br>
+[有向树判断](https://github.com/Conzxy/Data-Structures/blob/master/Graph/Directed%20Tree.md)<br>
+[prim](https://github.com/Conzxy/Data-Structures/blob/master/Graph/Prim.md)<br>
 [kruskal](https://github.com/Conzxy/Data-Structures/blob/master/Graph/Kruskal.md)<br>
 [Dijkstra](https://github.com/Conzxy/Data-Structures/blob/master/Graph/Dijkstra.md)<br>
 ## 二叉搜索树

@@ -87,7 +87,9 @@ void check()
 {
     degree_check();
 }
-
+```
+## 测试代码
+```cpp
 int main()
 {
     int numv,nume,direct;   //numv无用，只是为了格式
