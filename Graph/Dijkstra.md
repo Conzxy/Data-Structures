@@ -49,7 +49,7 @@ void Dijkstra(int numv,int v,vector<int>& d,vector<int>& p,vector<vector<int>> c
     int min,k;  
     vector<bool> final(numv,false);     //记录访问过的顶点
     d[v]=0;                             //v到v的距离为0
-    final[0]=true;                      //v不需要再访问了=>防止吃回头草
+    final[v]=true;                      //v不需要再访问了=>防止吃回头草
     for(int i=0;i<numv;i++)
     {
       d[i]=g[v][i];                     //记录v的临界边
