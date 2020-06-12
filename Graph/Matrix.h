@@ -7,6 +7,8 @@ extern bool flag;
 #include <utility>
 #include <vector>
 #include <set>
+#include <functional>
+#include <queue>
 
 using std::vector;
 
@@ -24,7 +26,11 @@ void solve1();
 
 void Dijkstra(vector<vector<int>> const&g,vector<int> &d,int numv,int v);
 
+void Dijkstra_heap(vector<ipair> *,int,int);
+
 void solve21();
+
+void solve22();
 
 int Find(int);
 

@@ -104,6 +104,47 @@ void Dijkstra(vector<vector<int>> const&g,vector<int> &d,int numv,int v)
     }
 }
 
+void Dijkstra_heap(vector<ipair> *adj,int numv,int v)
+{
+    priority_queue<ipair,vector<ipair>,greater<ipair>> pq;
+    //优先队列，按great排序可以构造小根堆，ipair将依次比较first，second
+    vector<int> dist(numv,INIF);            //将其他点权置为无穷大
+    dist[v]=0;                              //源点点权置为0
+    //vector<bool> final(numv,false);       //若顶点比较少，实在没必要
+    pq.push(make_pair(0,v));                //将源点放在堆顶
+    //pq.push(make_pair(dist[v],v));
+
+
+    while(!pq.empty())
+    {
+      int u=pq.top().second;                //取当前最小点权值对应的顶点
+      pq.pop();
+
+      for(auto x:adj[u])                    //adj[u]的first保存u邻接边的另一端，second保存边权
+      {
+        //if(!final[u]){
+          int s=x.first;                    //邻接边的另一端
+          int weight=x.second;              //邻接边的边权
+          if(dist[u]+weight<dist[s])        //可以松弛
+          {
+            //松弛操作
+            dist[s]=dist[u]+weight;
+            pq.push(make_pair(dist[s],s));
+          }
+      //}
+      }
+      //final[u]=true;                      //表示该点的邻接边已经全部访问了并防止吃回头草
+    }
+    for(int i=0;i<numv;i++)
+    {
+        if(dist[i]==INIF)
+        {
+          dist[i]=-1;                       //置为-1表示不存在到该顶点的最短路径
+        }
+        cout<<dist[i]<<" ";                 //输出源点到每个顶点的最短路径
+    }
+}
+
 void solve21()
 {
     int numv,nume,direct;
@@ -123,6 +164,26 @@ void solve21()
     {
         cout<<((x==INIF)?-1:x)<<" ";                 //输出源点到每个顶点的最短路径
     }
+}
+
+void solve22()
+{
+    int numv,nume,direct,u,v,s;
+    cin>>numv>>nume>>direct;//顶点数，边数，有向依据
+    vector<ipair> adj[numv];
+    for(int i=0;i<nume;i++)
+    {
+        cin>>u>>v;  //边头部和尾部
+        if(direct==0){
+            addedge_non_direct(adj,u-1,v-1);  //无权将边权置为1来表示边数，若有权则覆盖默认实参
+        }
+        else
+        {
+            addedge_direct(adj,u-1,v-1);
+        }
+    }
+    cin>>s;     //源点
+    Dijkstra_heap(adj, numv, s-1);
 }
 
 int Find(int x)
