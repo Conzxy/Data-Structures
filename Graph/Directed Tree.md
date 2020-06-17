@@ -64,7 +64,7 @@ void degree_check()     //检查入度
 {
     if(root_check())
     {
-        set<int>::iterator it=s.begin();
+        it=s.begin();
         int root=Find(fa[*it]);
         if(degree[root]!=0)
         {
