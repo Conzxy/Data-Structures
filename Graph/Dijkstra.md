@@ -138,18 +138,16 @@ void Dijkstra_heap(vector<ipair> *adj,int numv,int v)
 
       for(auto x:adj[u])                    //adj[u]的first保存u邻接边的另一端，second保存边权
       {
-        //if(!final[u]){
           int s=x.first;                    //邻接边的另一端
           int weight=x.second;              //邻接边的边权
-          if(dist[u]+weight<dist[s])        //可以松弛
+          if(dist[u]+weight<dist[s]&&!final[s])        //可以松弛
           {
             //松弛操作
             dist[s]=dist[u]+weight;
             pq.push(make_pair(dist[s],s));
           }
-      //}
       }
-      //final[u]=true;                      //表示该点的邻接边已经全部访问了并防止吃回头草
+      final[u]=true;                      //表示该点的邻接边已经全部访问了并防止吃回头草
     }
     for(int i=0;i<numv;i++)
     {
