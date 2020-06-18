@@ -1,11 +1,15 @@
 # Data-Structures
 ## 链表(内置迭代器类)
 [ListList.h](https://github.com/Conzxy/Data-Structures/blob/master/LinkList/LinkList.h)<br>
-[课设解决方案](https://github.com/Conzxy/Data-Structures/blob/master/LinkList/solve%20Implement.cpp)<br>
+[iterator](https://github.com/Conzxy/Data-Structures/blob/master/LinkList/iterator.h)<br>
+[operation](https://github.com/Conzxy/Data-Structures/blob/master/LinkList/operation.h)<br>
+[课设解决方案](https://github.com/Conzxy/Data-Structures/blob/master/LinkList/solve.h)<br>
 [main.cpp](https://github.com/Conzxy/Data-Structures/blob/master/LinkList/main.cpp)<br>
 ## 队列（链队列内置迭代器类）
 [循环队列](https://github.com/Conzxy/Data-Structures/blob/master/Queue/SQ.h)<br>
+[SQ.operation](https://github.com/Conzxy/Data-Structures/blob/master/Queue/SQ_operation.h)<br>
 [链队列](https://github.com/Conzxy/Data-Structures/blob/master/Queue/LQ.h)<br>
+[LQ_operation](https://github.com/Conzxy/Data-Structures/blob/master/Queue/LQ_operation.h)<br>
 [课设解决方案](https://github.com/Conzxy/Data-Structures/blob/master/Queue/solve%20Implement.cpp)<br>
 [main.cpp](https://github.com/Conzxy/Data-Structures/blob/master/Queue/main.cpp)<br>
 ## 串
