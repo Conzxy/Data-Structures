@@ -1,8 +1,8 @@
 # 插入排序
 ## 直接插入排序
-![](https://img2018.cnblogs.com/blog/1475571/201908/1475571-20190815204657643-1362081037.png)<br>
+![](https://img-blog.csdnimg.cn/20200617103202533.png)<br>
 直接插入排序就是无序区有和有序区反序的元素，那么就将这个元素插入到有序区中合适的位置，使之成为有序区的元素<br>
-![](https://img2018.cnblogs.com/blog/1475571/201908/1475571-20190815204529830-1630116127.png)<br>
+![](https://img-blog.csdnimg.cn/20200617103306503.png)<br>
 ### 实现代码
 ```cpp
 void InsertSort(List &L)

@@ -6,6 +6,7 @@
 
 ## 思路
 用并查集来解决该问题是最好的。<br>
+* init 初始化
 * Union 合并操作(包含成环判断)
 * Find 查找操作
 * 唯一根结点检查 root_check
@@ -64,7 +65,7 @@ void degree_check()     //检查入度
 {
     if(root_check())
     {
-        set<int>::iterator it=s.begin();
+        it=s.begin();
         int root=Find(fa[*it]);
         if(degree[root]!=0)
         {
