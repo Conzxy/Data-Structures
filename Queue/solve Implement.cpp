@@ -1,7 +1,8 @@
-#include "SQ.h"
-#include "LQ.h"
+#include "Myqueue.h"
 #include <string>
-using namespace std;
+
+using namespace sq;
+using namespace lq;
 
 void solve1()
 {
@@ -13,7 +14,8 @@ void solve1()
     while(cin>>str&&str!="end")
     {
         if(str=="in")
-        {   cin>>x;
+        {
+            cin>>x;
             Q.EnQueue(x);
         }
         else if(str=="out")

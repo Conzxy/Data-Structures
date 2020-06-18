@@ -130,7 +130,7 @@ bool BST<T>::Remove(T x, BST_Node<T>*& ptr)
 			temp = nullptr;		//防止野指针的产生
 			return true;
 		}
-	
+
 	}
 	else
 	{
@@ -169,14 +169,14 @@ void BST<T>::InOrder(BST_Node<T>* ptr)
 		std::cout << ptr->data << " ";
 		InOrder(ptr->rchild);
 	}
-	
+
 }
 
 //删除以root为根的二叉搜索树（子树）
 template<typename T>
 void BST<T>::Destroy(BST_Node<T>*& root)
 {
-	if (！root)
+	if (!root)
 	{
 		return;
 	}
