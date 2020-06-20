@@ -80,8 +80,6 @@ void Dijkstra(int numv,int v,vector<int>& d,set<int>& p,vector<vector<int>> cons
     }
 }
 ```
-### 时间复杂度
-嵌套for循环，所以为O(n^2)。
 
 ### 测试代码
 ```cpp
@@ -194,13 +192,13 @@ void Dijkstra_heap(vector<ipair> *adj,int numv,int v)
 伪代码：
 ```
 1  INITIALIZE-SINGLE-SOURCE(G, s)    
-2  S ← Ø									//S存储已访问顶点
-3  Q ← V[G]            						//Q存储所有顶点
+2  S ← Ø					//S存储已访问顶点
+3  Q ← V[G]            				//Q存储所有顶点
 4  while Q ≠ Ø
 5      do u ← EXTRACT-MIN(Q)         		//exact_min
 6         S ← S ∪{u}
 7         for each vertex v ∈ Adj[u]
-8             do RELAX(u, v, w)      				//decrease_key
+8             do RELAX(u, v, w)      	        //decrease_key
 ```
 
 Tn=O(e·Tdk+v·Tem)，Tdk表示decrease_key的时间复杂度，Tem表示exact_min的时间复杂度，这是因为decrease_key体现在松弛操作，松弛操作需要遍历最小权值点的邻接边,最多遍历所有边，以最多遍历的那次代表其他顶点的松弛，所以是e（Big O），而exact_min与顶点数有关，最坏需要遍历所有顶点（一般版本就是要遍历所有顶点），所以是v。
