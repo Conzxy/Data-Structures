@@ -168,6 +168,31 @@ void Dijkstra_heap(vector<ipair> *adj,int numv,int v)
 }
 ```
 
+## 测试代码
+```cpp
+int main ()
+{
+    int numv,nume,direct,u,v,s;
+    cin>>numv>>nume>>direct;//顶点数，边数，有向依据
+    vector<ipair> adj[numv];
+    for(int i=0;i<nume;i++)
+    {
+        cin>>u>>v;  //边头部和尾部
+        if(direct==0){
+            addedge_non_direct(adj,u-1,v-1);  //无权将边权置为1来表示边数，若有权则覆盖默认实参
+        }
+        else
+        {
+            addedge_direct(adj,u-1,v-1);
+        }
+    }
+    cin>>s;     //源点
+    Dijkstra_heap(adj, numv, s-1);
+
+    return 0;
+}
+```
+
 ## 代码部分说明：
 ### !final[u]
 我们在取出最小权值点其实要对该点进行判定，因为可能是访问过的顶点，堆中存在两个相同顶点的pair，一个是松弛过的，一个是之前的，当然松弛过的肯定会优先弹出来，这样之前的再弹出来也就没意义了，因此要进行一次判定。<br>
@@ -204,27 +229,3 @@ void Dijkstra_heap(vector<ipair> *adj,int numv,int v)
 Tn=O(e·Tdk+v·Tem)，Tdk表示decrease_key的时间复杂度，Tem表示exact_min的时间复杂度，这是因为decrease_key体现在松弛操作，松弛操作需要遍历最小权值点的邻接边,最多遍历所有边，以最多遍历的那次代表其他顶点的松弛，所以是e（Big O），而exact_min与顶点数有关，最坏需要遍历所有顶点（一般版本就是要遍历所有顶点），所以是v。
 一般版本的exact_min是通过for循环，最坏遍历所有顶点，所以是O(v),decrease_key很简单，不需要调整最小路径数组，为O(1),那么时间复杂度为O(e+v^2)=O(v^2)，但我们可以通过优先队列来优化，优先队列可以自动进行堆排序，这个维护堆的过程时间复杂度最坏为O(logv),而exact_min的过程堆排序进行为O(logv)，decrease_key的过程需要维护堆也是O(logv)所以堆优化的Dijkstra的时间复杂度为O((e+v)logv),取同阶时间复杂度为O(nlogn)>O(n^2)。
 
-## 测试代码
-```cpp
-int main ()
-{
-    int numv,nume,direct,u,v,s;
-    cin>>numv>>nume>>direct;//顶点数，边数，有向依据
-    vector<ipair> adj[numv];
-    for(int i=0;i<nume;i++)
-    {
-        cin>>u>>v;  //边头部和尾部
-        if(direct==0){
-            addedge_non_direct(adj,u-1,v-1);  //无权将边权置为1来表示边数，若有权则覆盖默认实参
-        }
-        else
-        {
-            addedge_direct(adj,u-1,v-1);
-        }
-    }
-    cin>>s;     //源点
-    Dijkstra_heap(adj, numv, s-1);
-
-    return 0;
-}
-```
