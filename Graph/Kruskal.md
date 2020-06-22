@@ -4,83 +4,67 @@ kruskal需要边的集合，我们称其为边集数组。边集数组按从小�
 ## 边集数组
 结构体
 ```cpp
-template<typename T,typename E>
-struct EdgeInf
-{
-  int begin;  //头部
-  int end;    //尾部
-  E edgeweight; //权值
-  bool operator<(EdgeInf const& rhs)
-  {
-    return this->edgeweight<rhs.edgeweight;
-  }//sort的比较器//隐式谓词
-}
+struct edge {
+    int begin, end, weight;
+    bool operator<(edge const& rhs)
+    {return this->weight < rhs.weight;}
+}edges[maxsize * (maxsize - 1)];
 ```
 边集数组构造函数
 ```cpp
-vector<EdgeInf<T,E>> Matrix::edgeinfo()
+void get_edges_set()
 {
-    vector<EdgeInf<T,E>> edgeIfo;
-    EdgeInf<T,E> sedge;
-    if(!Directed) //无向
+    int a = 0;
+    for (int i = 0; i < nume; i++)
     {
-      for(int i=0;i<_num_Vertexes;i++)
-        for(int j=i+1;i<_num_Vertexes;j++)  //无向图对称
-          if(edge[i][j]!=0&&edge[i][j]!=_max_Weight)
-          {
-            sedge.begin=i;
-            sedge.end=j;
-            sedge.edgeweight=edge[i][j];
-            edgeIfo.push_back(sedge);
-          }
+        cin >> u >> v >> w;
+        edges[a].begin = u - 'A';
+        edges[a].end = v - 'A';
+        edges[a++].weight = w;
     }
-    else{
-      for(int i=0;i<_num_Vertexes;j++)
-        for(int j=0;j<_num_vertexes;j++)
-          if(edge[i][j]!=0&&edge[i][j]!=_max_Weight)
-          {
-            sedge.begin=i;
-            sedge.end=j;
-            sedge.edgeweight=edge[i][j];
-            edgeIfo.push_back(sedge);
-          }
-    }
-    sort(edgeIfo.begin(),edgeIfo.end());  //调用sort进行排序（QuickSort）
-    return edgeIfo;
+    sort(edges, edges + a);
 }
 ```
 
 ## 构造最小生成树
 边集数组构造好，vector中根据权值从小到大排序。我们沿着下标选择begin和end连线来构造最小生成树，但是，在连接过程中可能出现成环的现象，这是由于父节点重复了，孩子想与父节点连在一起或是孩子想连在一起而造成的一种严重错误。<br>
-我们可以通过一个parent数组来储存下标对应顶点的父节点，从而避免自环的情况。<br>
+我们可以通过并查集来避开成环情况。
 ```cpp
-vector<int> parent(numvertexes,0);
-int Find(vector<int> parent,int f)
+int findset(int x)
 {
-  if(parent>0)  //找到当前树的根结点，没有直接返回连线尾部顶点
-    f=parent[f];
-  return f;
+    return (fa[x] == x) ? x : findset(fa[x]);
+}
+
+void Union(int b, int e)
+{
+    int bb = findset(b);
+    int ee = findset(e);
+    if (bb != ee)
+        fa[bb] = ee;
+}
+
+void init()
+{
+    for(int i = 0; i < maxsize; i++)
+        fa[i] = i;
 }
 ```
 Kruskal
 ```cpp
-void MinispanTreeKruskal(int numvertex,int numedge,vector<EdgeInf<string,int>> const&edgeInf,vector<EdgeInf<string,int>> &finaledge)
+void kruskal(vector<pair<int, int>>& ET)
 {
-  int m,n;
-  int parent(numvertex,0);  //初始化parent
-  for(int i=0;i<numvertex;i++){
-    m=Find(parent,edgeInf[i].begin);
-    n=Find(parent,edgeInf[i].end);
-    if(m!=n)  //不相等表示父节点不是同一个，那么就不会出现自环现象
+    for (int i = 0; i < nume; i++)
     {
-      parent[m]=n;  //两树合并，新加入的结点成为新的根结点(单一的根结点当然也是树)
-      finaledge.push_back(edgeInf[i]);
+        int uu = findset(edges[i].begin);
+        int vv = findset(edges[i].end);
+        if (uu != vv)
+        {
+            Union(edges[i].begin, edges[i].end);
+            ET.push_back(make_pair(edges[i].begin, edges[i].end));
+        }
     }
-  }
 }
 ```
-n=m说明了有两颗树，它们的根结点是相同的，那么它们就是连通的，如果再添上一笔连接在一起就会形成环，而这正是我们要避免的。<br>
-而parent[m]=n的作用就是将一个个没有连通的树或结点连接在一起，最后形成最小生成树。<br>
 ## 实例讲解
 ![](https://img-blog.csdnimg.cn/20200603093015119.png)<br>
 边集数组为：<br>
@@ -121,3 +105,93 @@ n=m说明了有两颗树，它们的根结点是相同的，那么它们就是�
 
 最终最小生成树的连接情况：<br>
 ![](https://img-blog.csdnimg.cn/20200603101833805.png)<br>
+
+## 实现代码
+```cpp
+#include <iostream>
+#include <string>
+#include <vector>
+#include <utility>
+#include <algorithm>
+
+using namespace std;
+string const alphabet("ABCDEFGHIJkLMNOPQRSTUVWXYZ");
+int const maxsize = 26;
+int fa[maxsize];
+int nume, w;
+char u, v;
+struct edge {
+    int begin, end, weight;
+    bool operator<(edge const& rhs)
+    {
+        return this->weight < rhs.weight;
+    }
+}edges[maxsize * (maxsize - 1)];
+
+void get_edges_set()
+{
+    int a = 0;
+    for (int i = 0; i < nume; i++)
+    {
+        cin >> u >> v >> w;
+        edges[a].begin = u - 'A';
+        edges[a].end = v - 'A';
+        edges[a++].weight = w;
+    }
+    sort(edges, edges + a);
+}
+
+int findset(int x)
+{
+    return (fa[x] == x) ? x : findset(fa[x]);
+}
+
+void Union(int b, int e)
+{
+    int bb = findset(b);
+    int ee = findset(e);
+    if (bb != ee)
+        fa[bb] = ee;
+}
+
+void init()
+{
+    for(int i = 0; i < maxsize; i++)
+        fa[i] = i;
+}
+void kruskal(vector<pair<int, int>>& ET)
+{
+    for (int i = 0; i < nume; i++)
+    {
+        int uu = findset(edges[i].begin);
+        int vv = findset(edges[i].end);
+        if (uu != vv)
+        {
+            Union(edges[i].begin, edges[i].end);
+            ET.push_back(make_pair(edges[i].begin, edges[i].end));
+        }
+    }
+}
+
+int main()
+{
+    while (cin >> nume && nume > 0)
+    {
+        init();
+        vector<pair<int, int>> ET;
+        get_edges_set();
+        kruskal(ET);
+
+        cout << "{";
+        for (auto i=ET.begin();i!=ET.end();i++)
+        {
+            if(i!=prev(ET.end()))
+            cout << alphabet[(*i).first] << alphabet[(*i).second] << ",";
+            else
+            cout << alphabet[(*i).first] << alphabet[(*i).second] ;
+        }
+        cout << "}";
+    }
+}
+
+```
