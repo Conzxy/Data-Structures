@@ -93,10 +93,11 @@ F G 11<br>
 
 0
 
+PS:0表示终止输入
 ## 输出样本
 {BF,AF,CD,CF,DE}<br>
 {AD,CE,DF,AB,BE,EG}
-PS:0表示终止输入
+
 ## 实现代码
 ```cpp
 #include <iostream>
