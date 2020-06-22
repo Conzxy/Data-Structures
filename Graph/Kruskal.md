@@ -187,6 +187,6 @@ int main()
 }
 ```
 ## 时间复杂度
-Tn=O(e)·O(sort)+O(e)·α(v)
+Tn=O(e)·O(sort)+O(e)·α(v)<br>
 α是阿克曼的反函数，近乎常数（不超过5）
 因此Tn=O(eloge);
