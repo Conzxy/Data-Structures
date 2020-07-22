@@ -93,10 +93,11 @@ F G 11<br>
 
 0
 
+PS:0表示终止输入
 ## 输出样本
 {BF,AF,CD,CF,DE}<br>
 {AD,CE,DF,AB,BE,EG}
-PS:0表示终止输入
+
 ## 实现代码
 ```cpp
 #include <iostream>
@@ -186,6 +187,6 @@ int main()
 }
 ```
 ## 时间复杂度
-Tn=O(e)·O(sort)+O(e)·α(v)
+Tn=O(e)·O(sort)+O(e)·α(v)<br>
 α是阿克曼的反函数，近乎常数（不超过5）
 因此Tn=O(eloge);
