@@ -11,6 +11,9 @@ namespace zxy{
     //template alias of BinaryNode
     template<typename T>
     using BNode=typename BinarySearchTree<T>::BinaryNode;
+    //后面用BNode会编译错误（匹配不到声明），应该是depend name的问题，BNode依赖于自己的模板
+    //而BinarySearchTree<T>依赖于BinarySearchTree类的模板
+    //如果你用宏就没这事（当然你模板得对应，毕竟只是文本替换）
 
     template<typename T>
     BinarySearchTree<T>::BinarySearchTree()
